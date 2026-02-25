@@ -1,4 +1,6 @@
-/* RESET BÁSICO */
+/* =========================
+   RESET
+========================= */
 * {
   margin: 0;
   padding: 0;
@@ -11,14 +13,15 @@ html, body, #root {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* CONTENEDOR PRINCIPAL */
+/* =========================
+   CONTENEDORES
+========================= */
 .app-container {
   height: 100vh;
   width: 100%;
   display: flex;
 }
 
-/* CONTENEDOR WHATSAPP */
 .whatsapp-container {
   width: 100%;
   height: 100vh;
@@ -26,7 +29,9 @@ html, body, #root {
   background-color: #ffffff;
 }
 
-/* SIDEBAR */
+/* =========================
+   SIDEBAR
+========================= */
 .sidebar {
   width: 30%;
   min-width: 360px;
@@ -37,18 +42,21 @@ html, body, #root {
   border-right: 1px solid #ddd;
 }
 
-/* ÁREA DE CHAT */
+/* =========================
+   CHAT AREA (CLARO)
+========================= */
 .chat-area {
   flex: 1;
   height: 100%;
   display: flex;
   flex-direction: column;
   background-color: #efeae2;
-  background-image: radial-gradient(#dcdcdc 1px, transparent 1px);
-  background-size: 20px 20px;
+  color: #111b21;
 }
 
-/* ITEMS DE CHAT */
+/* =========================
+   CHAT ITEMS
+========================= */
 .chat-item {
   display: flex;
   gap: 12px;
@@ -67,7 +75,9 @@ html, body, #root {
   background-color: #e9edef;
 }
 
-/* SCROLL PERSONALIZADO SUAVE */
+/* =========================
+   SCROLL
+========================= */
 .sidebar::-webkit-scrollbar,
 .chat-area::-webkit-scrollbar {
   width: 6px;
@@ -79,10 +89,177 @@ html, body, #root {
   border-radius: 10px;
 }
 
-/* MOBILE */
+/* =========================
+   MENU IZQUIERDO
+========================= */
+.left-menu {
+  width: 70px;
+  background-color: #f0f2f5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-right: 1px solid #ddd;
+}
+
+.menu-top,
+.menu-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+}
+
+.menu-icon {
+  font-size: 22px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: 0.2s;
+}
+
+.menu-icon:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.menu-icon.active {
+  opacity: 1;
+}
+
+.profile-pic img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* =========================
+   DARK MODE
+========================= */
+
+.dark-mode {
+  background-color: #111b21;
+  color: #e9edef;
+}
+
+/* SIDEBAR DARK */
+.dark-mode .sidebar {
+  background-color: #111b21;
+  color: #e9edef;
+}
+
+/* MENU DARK */
+.dark-mode .left-menu {
+  background-color: #202c33;
+}
+
+/* CHAT ITEMS DARK */
+.dark-mode .chat-item {
+  background-color: transparent !important;
+  color: #e9edef;
+  border-bottom: 1px solid #1f2c34;
+}
+
+.dark-mode .chat-item:hover {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.dark-mode .chat-item.active {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* 🔥 GALAXIA SOLO EN EL AREA REAL DE MENSAJES */
+.dark-mode .chat-area > div > div:nth-child(3) {
+  background: radial-gradient(circle at 20% 30%, #1a2a3a, transparent 40%),
+              radial-gradient(circle at 80% 70%, #162c3a, transparent 45%),
+              radial-gradient(circle at 50% 50%, #0f2027, #0b141a) !important;
+}
+
+/* HEADER DEL CHAT */
+.dark-mode .chat-area > div:first-child {
+  background-color: #f0f2f5 !important;
+  color: #111b21 !important;
+}
+
+.dark-mode .chat-area > div:first-child strong {
+  color: #111b21 !important;
+}
+
+/* MENSAJES OTRO */
+.dark-mode .chat-area div[style*="white"] {
+  background-color: #202c33 !important;
+  color: #e9edef !important;
+}
+
+/* MENSAJES MIOS */
+.dark-mode .chat-area div[style*="#d9fdd3"] {
+  background-color: #005c4b !important;
+  color: #ffffff !important;
+}
+
+/* INPUT DARK */
+.dark-mode input {
+  background-color: #202c33 !important;
+  color: #ffffff !important;
+  border: 1px solid #2a3942 !important;
+}
+
+/* TRANSICION SUAVE */
+body,
+.sidebar,
+.chat-area,
+.left-menu,
+.chat-item {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* =========================
+   MOBILE
+========================= */
 @media (max-width: 768px) {
   .sidebar {
     width: 100%;
     min-width: unset;
   }
+}
+
+/* =========================
+   GALAXIA REAL SIN TOCAR JSX
+========================= */
+
+.dark-mode .chat-area > div > div {
+  background: radial-gradient(circle at 20% 30%, #1a2a3a, transparent 40%),
+              radial-gradient(circle at 80% 70%, #162c3a, transparent 45%),
+              radial-gradient(circle at 50% 50%, #0f2027, #0b141a) !important;
+}
+
+/* =========================
+   PANEL DERECHO SIEMPRE BLANCO (AISLADO DEL FONDO GALAXIA)
+========================= */
+
+.dark-mode .chat-area > div > div[style*="width: 380px"] {
+  background: #ffffff !important;
+  background-image: none !important;
+}
+
+/* =========================
+   GALAXIA GLOBAL EN DARK (AREA DERECHA)
+========================= */
+
+.dark-mode .chat-area {
+  background: radial-gradient(circle at 20% 30%, #1a2a3a, transparent 40%),
+              radial-gradient(circle at 80% 70%, #162c3a, transparent 45%),
+              radial-gradient(circle at 50% 50%, #0f2027, #0b141a) !important;
+}
+
+/* =========================
+   TEXTO "SELECCIONÁ UNA OPCIÓN" EN DARK
+========================= */
+
+.dark-mode .chat-area > div[style*="margin: auto"] {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #ffffff !important;
 }
