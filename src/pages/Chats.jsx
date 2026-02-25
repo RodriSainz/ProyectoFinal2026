@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import { UserContext } from "../context/UserContext"
 import { useNavigate, useParams } from "react-router-dom"
 import ChatDetail from "./ChatDetail"
-import "../styles/layout.css"
+import "../Styles/layout.css"
 
 import messi from "../assets/avatars/messi.jpg"
 import taylor from "../assets/avatars/taylor.jpg"

@@ -1,7 +1,7 @@
 import { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { UserContext } from "../context/UserContext"
-import "../styles/login.css"
+import "../Styles/login.css"
 
 function Login() {
   const [name, setName] = useState("")
