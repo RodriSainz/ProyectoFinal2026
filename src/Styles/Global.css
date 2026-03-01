@@ -7,4 +7,57 @@
 body {
   font-family: Arial, sans-serif;
   background-color: #f0f2f5;
+  transition: background-color 0.3s ease;
+}
+
+/* Integración de variables para facilitar cambios futuros */
+body.dark-mode {
+  background-color: #0b141a;
+}
+
+/* Contenedor principal de la App */
+.app-container {
+  display: flex;
+  height: 100vh;
+  flex-direction: row; /* Escritorio: Lado a lado */
+}
+
+/* Sidebar / Menú izquierdo */
+.sidebar {
+  width: 30%;
+  display: flex;
+  flex-direction: column; /* Escritorio: Iconos/Chats hacia abajo */
+}
+
+/* --- ADAPTACIÓN RESPONSIVE (Tablets y Móviles) --- */
+@media (max-width: 1024px) {
+  .app-container {
+    flex-direction: column-reverse; /* Envía el menú abajo */
+  }
+
+  .sidebar {
+    width: 100%;
+    height: 60px; /* Altura fija para el menú inferior */
+    flex-direction: row; /* Pone los elementos en horizontal */
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid #ddd;
+    border-right: none;
+    background-color: var(--bg-color); /* Usa tus variables de modo oscuro */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+  }
+
+  /* Ocultar la lista de chats en el menú inferior y dejar solo iconos de acceso */
+  .sidebar-chats-list {
+    display: none; 
+  }
+
+  /* Ajustar el área de chat para que no lo tape el menú */
+  .chat-detail-container {
+    height: calc(100vh - 60px); 
+    margin-bottom: 60px;
+  }
 }

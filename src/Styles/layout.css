@@ -169,21 +169,14 @@ html, body, #root {
   background-color: rgba(255, 255, 255, 0.08) !important;
 }
 
-/* 🔥 GALAXIA SOLO EN EL AREA REAL DE MENSAJES */
-.dark-mode .chat-area > div > div:nth-child(3) {
-  background: radial-gradient(circle at 20% 30%, #1a2a3a, transparent 40%),
-              radial-gradient(circle at 80% 70%, #162c3a, transparent 45%),
-              radial-gradient(circle at 50% 50%, #0f2027, #0b141a) !important;
-}
-
-/* HEADER DEL CHAT */
+/* HEADER DEL CHAT (CORREGIDO PARA MODO OSCURO) */
 .dark-mode .chat-area > div:first-child {
-  background-color: #f0f2f5 !important;
-  color: #111b21 !important;
+  background-color: #202c33 !important;
+  color: #e9edef !important;
 }
 
 .dark-mode .chat-area > div:first-child strong {
-  color: #111b21 !important;
+  color: #e9edef !important;
 }
 
 /* MENSAJES OTRO */
@@ -215,23 +208,13 @@ body,
 }
 
 /* =========================
-   MOBILE
+   MOBILE (768px)
 ========================= */
 @media (max-width: 768px) {
   .sidebar {
     width: 100%;
     min-width: unset;
   }
-}
-
-/* =========================
-   GALAXIA REAL SIN TOCAR JSX
-========================= */
-
-.dark-mode .chat-area > div > div {
-  background: radial-gradient(circle at 20% 30%, #1a2a3a, transparent 40%),
-              radial-gradient(circle at 80% 70%, #162c3a, transparent 45%),
-              radial-gradient(circle at 50% 50%, #0f2027, #0b141a) !important;
 }
 
 /* =========================
@@ -262,4 +245,248 @@ body,
   border: none !important;
   box-shadow: none !important;
   color: #ffffff !important;
+}
+
+.config-item {
+  color: #111b21;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.config-item:hover {
+  background-color: rgba(0,0,0,0.05);
+}
+
+.logout {
+  color: #e53935;
+}
+
+.logout:hover {
+  background-color: rgba(229,57,53,0.08);
+}
+
+.dark-mode .config-item {
+  color: #e9edef;
+}
+
+.dark-mode .config-item:hover {
+  background-color: rgba(255,255,255,0.08);
+}
+
+/* ============================================================
+   SOLO RESPONSIVE (320px hasta 1024px)
+   ============================================================ */
+
+@media (max-width: 1024px) {
+  .whatsapp-container {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100vh !important;
+    width: 100vw !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+
+  .sidebar {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: calc(100vh - 65px) !important; 
+    display: flex !important;
+    flex-direction: column !important;
+    border-right: none !important;
+    background-color: inherit !important;
+    z-index: 5 !important;
+  }
+
+  .left-menu {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 65px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-around !important;
+    align-items: center !important;
+    background-color: #f0f2f5 !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    z-index: 9999 !important;
+  }
+
+  .menu-top, 
+  .menu-bottom {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 15px !important;
+    align-items: center !important;
+    justify-content: space-around !important;
+    flex: 1 !important;
+  }
+
+  .menu-icon {
+    font-size: 22px !important;
+    margin: 0 !important;
+    display: flex !important;
+  }
+
+  .profile-pic img {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .chat-area {
+    display: none !important;
+  }
+
+  .whatsapp-container.has-selected-chat .sidebar,
+  .whatsapp-container.has-selected-chat .left-menu {
+    display: none !important;
+  }
+
+  .whatsapp-container.has-selected-chat .chat-area {
+    display: flex !important;
+    width: 100% !important;
+    height: 100vh !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    z-index: 10000 !important;
+  }
+
+  .back-arrow-mobile {
+    display: flex !important;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .dark-mode .left-menu {
+    background-color: #202c33 !important;
+    border-top: 1px solid #2a3942 !important;
+  }
+}
+
+/* ============================================================
+   RESETEO ESTRUCTURAL: CHATS + BUSCADOR + USUARIOS (320px a 1024px)
+   ============================================================ */
+
+@media (max-width: 1024px) {
+  .sidebar {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important; 
+    width: 100% !important;
+    padding: 0 !important;
+    overflow-x: hidden !important;
+  }
+
+  .sidebar > div {
+    width: 90% !important; 
+    max-width: 90% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    position: relative !important;
+    left: 0 !important;
+  }
+
+
+  .sidebar:not(:has(input)) h2, 
+  .sidebar:not(:has(input)) h3 {
+    font-size: 28px !important;
+    font-weight: 800;
+    margin: 20px 0 10px 0 !important;
+    color: #111b21;
+  }
+
+  .sidebar input {
+    width: 100% !important;
+    height: 45px !important;
+    border-radius: 12px !important;
+    border: none !important;
+    background-color: #f0f2f5 !important;
+    padding: 0 15px !important;
+    margin: 10px 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .sidebar [role="grid"], 
+  .sidebar [role="row"],
+  .sidebar .chat-list,
+  .sidebar [aria-label*="Estado"],
+  .sidebar [data-testid*="status"],
+  .sidebar div[data-testid="cell-frame-container"] {
+    width: 100% !important;
+    display: flex !important;
+    margin-bottom: 5px !important;
+  }
+
+  .sidebar [role="row"] > div, 
+  .sidebar [role="listitem"] {
+    width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .dark-mode .sidebar h2::before,
+  .dark-mode .sidebar:not(:has(input)) h2 { 
+    color: #e9edef !important; 
+  }
+
+  .dark-mode .sidebar input {
+    background-color: #202c33 !important;
+    color: #fff !important;
+  }
+}
+
+/* --- REFUERZO DE MODO OSCURO --- */
+.dark-mode .sidebar {
+  background-color: #111b21 !important; 
+}
+
+.dark-mode .sidebar > div {
+  background-color: transparent !important;
+}
+
+.dark-mode .sidebar [role="row"],
+.dark-mode .sidebar [data-testid="cell-frame-container"],
+.dark-mode .sidebar div[style*="height: 72px"] {
+  background-color: #111b21 !important;
+  border-bottom: 1px solid #222d34 !important;
+}
+
+.dark-mode .sidebar span, 
+.dark-mode .sidebar div {
+  color: #e9edef !important;
+}
+
+.dark-mode .sidebar .chat-time,
+.dark-mode .sidebar [style*="color: rgba(0, 0, 0, 0.45)"] {
+  color: #8696a0 !important;
+}
+
+.dark-mode .sidebar h2::before, 
+.dark-mode .sidebar h3::before,
+.dark-mode .sidebar .header-title::before {
+  color: #e9edef !important;
+}
+
+.dark-mode .sidebar [role="row"] span[title],
+.dark-mode .sidebar .chat-title,
+.dark-mode .sidebar div[dir="auto"] {
+  color: #e9edef !important;
+}
+
+.dark-mode .sidebar input {
+  color: #e9edef !important;
+}
+
+.dark-mode .sidebar svg,
+.dark-mode .sidebar button i {
+  color: #8696a0 !important;
 }
